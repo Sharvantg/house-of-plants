@@ -1,3 +1,4 @@
 - Must define productContext file
 - Add functionality to save chosen cart items
 - commit and push to live server
+- the state of the cart value does not persist across pages
