@@ -1,20 +1,25 @@
-import React, { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 
 export const ProductContext = createContext({
   productName: "",
   productPrice: 0,
   productImage: "",
+  setProductDetails: () => {},
 });
 
 export const ProductProvider = ({ children }) => {
   const [productName, setProductName] = useState("");
   const [productPrice, setProductPrice] = useState(0);
-  const [productDescription, setProductDescription] = useState("");
+  const [productImage, setProductImage] = useState("");
 
-  const setProductDetails = (name, price, description) => {
+  useEffect(() => {
+    console.log("Updated productName:", productName);
+  }, [productName]);
+
+  const setProductDetails = (name, price, image) => {
     setProductName(name);
     setProductPrice(price);
-    setProductDescription(description);
+    setProductImage(image);
   };
 
   return (
@@ -22,8 +27,7 @@ export const ProductProvider = ({ children }) => {
       value={{
         productName,
         productPrice,
-        productDescription,
-        setProductDetails,
+        productImage,
       }}
     >
       {children}

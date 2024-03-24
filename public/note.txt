@@ -1,4 +1,9 @@
 - Must define productContext file
+    - user clicks on ProductCard 
+    - context is stored on which card was clicked on
+    - context is shared with the component on the product pages
+    - details of the card are retrieved
+
 - Add functionality to save chosen cart items
 - commit and push to live server
 - the state of the cart value does not persist across pages

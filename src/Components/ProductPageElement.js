@@ -1,16 +1,23 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import * as _Builtin from "../../devlink/_Builtin";
-import { useContext, useState } from "react";
 import { ProductContext } from "@/Helpers/ProductContext";
 import { AddToCartButton } from "./AddToCartButton";
 
 export function ProductPageElement({
   as: _Component = _Builtin.Block,
-  nameOfProd = "Name of the product",
-  productDesc = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
+  nameOfProd,
+  descOfProd,
+  imageOfProd,
+  priceOfProd,
 }) {
   const { productName, productPrice, productImage } =
     useContext(ProductContext);
+
+  // useEffect(() => {
+  //   console.log("productName");
+  //   console.log(productName); // This will log the updated productName value
+  // }, [productName]);
+
   return (
     <_Component className="product-page-hero" tag="div">
       <_Builtin.Block
@@ -23,7 +30,7 @@ export function ProductPageElement({
           width="auto"
           height="auto"
           alt=""
-          src={productImage}
+          src={imageOfProd}
         />
       </_Builtin.Block>
       <_Builtin.Block
@@ -31,9 +38,9 @@ export function ProductPageElement({
         id="w-node-ea3c1f43-bf62-299b-fbe5-3f5c9ab5141f-9ab5141c"
         tag="div"
       >
-        <_Builtin.Heading tag="h2">{productName}</_Builtin.Heading>
+        <_Builtin.Heading tag="h2">{nameOfProd}</_Builtin.Heading>
         <_Builtin.Block className="product-desc" tag="div">
-          {productDesc}
+          {descOfProd}
         </_Builtin.Block>
         <_Builtin.Block className="size-wrapper" tag="div">
           <_Builtin.Block className="text-size-regular" tag="div">
@@ -51,7 +58,7 @@ export function ProductPageElement({
         </_Builtin.Block>
         <_Builtin.Block className="price-and-addtocart" tag="div">
           <_Builtin.Block className="product-price" tag="div">
-            {"₹200"}
+            {priceOfProd}
           </_Builtin.Block>
           <AddToCartButton />
         </_Builtin.Block>

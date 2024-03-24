@@ -1,10 +1,10 @@
 import React from "react";
 import * as _Builtin from "../../devlink/_Builtin";
-
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import Link from "next/link";
 import { ProductContext } from "@/Helpers/ProductContext";
 import { AddToCartButton } from "./AddToCartButton";
+import { useRouter } from "next/router"; // if you use pages dir
 
 export function ProductCard({
   as: _Component = _Builtin.Block,
@@ -12,22 +12,23 @@ export function ProductCard({
   price,
   image,
 }) {
-  const { setProductDetails } = useContext(ProductContext);
+  const {
+    setProductDetails,
+    setProductName,
+    setProductPrice,
+    setProductImage,
+  } = useContext(ProductContext);
 
   function updateCart() {
     setCartCount(cartCount + 1);
   }
 
-  function clickedOnProduct() {
-    setProductDetails(name, price, image);
-    console.log(name);
-    console.log(price);
-  }
-
-  function handleClick() {
-    updateCart();
-    clickedOnProduct();
-  }
+  const clickedOnProduct = () => {
+    setProductName("This Is a Name");
+    setProductPrice(0);
+    setProductImage("Image");
+    // setProductDetails("thisIsAName", 123, "image");
+  };
 
   return (
     <_Component
@@ -45,7 +46,7 @@ export function ProductCard({
         />
       </_Builtin.Block>
       <_Builtin.Block className="plant-details-holder" tag="div">
-        <Link href={`/${name}`}>
+        <Link href={`/${name}`} onClick={clickedOnProduct}>
           <_Builtin.Block className="product-details-text" tag="div">
             {name}
           </_Builtin.Block>

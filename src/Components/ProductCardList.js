@@ -9,7 +9,7 @@ export function ProductCardList({
   productFilter = {},
 }) {
   return (
-    <_Builtin.NavbarContainer className="container-large" tag="div">
+    <_Builtin.Container className="container-large" tag="div">
       <_Component className="product-list-grid" tag="div" {...productFilter}>
         {plants.map((plant, index) => (
           <ProductCard
@@ -21,6 +21,6 @@ export function ProductCardList({
           />
         ))}
       </_Component>
-    </_Builtin.NavbarContainer>
+    </_Builtin.Container>
   );
 }

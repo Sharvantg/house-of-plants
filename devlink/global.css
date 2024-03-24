@@ -2424,6 +2424,8 @@ a {
   border-style: solid;
   border-width: 1px;
   border-color: hsla(0, 0.00%, 66.00%, 1.00);
+
+  background-color: var(--white);
 }
 
 .product-image-wrapper {
